@@ -1,0 +1,15 @@
+package com.s1g2.es2;
+
+public class Sim {
+	
+	String cellulare;
+	double credito;
+	Chiamata[] chiamate[];
+	
+	public Sim(String cellulare) {
+		this.cellulare = cellulare;
+		this.credito = 0;
+		this.chiamate[5] = new Chiamata[5];
+	}
+
+}

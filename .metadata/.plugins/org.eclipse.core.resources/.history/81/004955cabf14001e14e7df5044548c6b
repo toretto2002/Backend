@@ -1,0 +1,15 @@
+package com.epicode.classes;
+
+public class Veicolo {
+	String marca;
+	String modello;
+	String targa;
+	
+	void avviaVeicolo() {
+		System.out.println("Veicolo avviato");
+	}
+	
+	void fermaVeicolo() {
+		System.out.println("Veicolo fermo");
+	}
+}

@@ -1,0 +1,10 @@
+package com.s1g1.es1;
+
+public class MainRettangolo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

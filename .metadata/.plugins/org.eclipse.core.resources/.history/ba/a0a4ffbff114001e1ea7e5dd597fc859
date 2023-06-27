@@ -1,0 +1,9 @@
+package com.s1g1.es1;
+
+public class Main {
+	
+	Rettangolo square = new Rettangolo(5, 2);
+	
+	System.
+
+}
