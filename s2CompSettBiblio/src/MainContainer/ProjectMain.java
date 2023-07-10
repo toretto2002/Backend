@@ -101,8 +101,7 @@ public class ProjectMain {
 		 try {
 			readFromFile();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e.getMessage());
 		}
 		
 
@@ -179,26 +178,37 @@ public class ProjectMain {
 		Set<String> keys = m.keySet();
 		Object[] arr = keys.toArray();
 		String toSave;
+		FileUtils.deleteQuietly(file);
 	
-		for (Object s : arr) {
-			if(m.get(s) instanceof Book) {
-				Book b = (Book) m.get(s);
-				toSave = "£" + b.getISBNCode() + "|" + b.getTitle() + "|" + b.getYear() + "|" + b.getNumberOfPages() + "|" + b.getAutor().getNome() + "|" + b.getAutor().getCognome() + "|" + b.getGenre() + "#";
+		for (int i = 0; i < arr.length; i++) {
+			if(m.get(arr[i]) instanceof Book) {
+				Book b = (Book) m.get(arr[i]);
+				toSave = "£" + "@" + b.getISBNCode() + "@" + b.getTitle() + "@" + b.getYear() + "@" + b.getNumberOfPages() + "@" + b.getAutor().getNome() + "@" + b.getAutor().getCognome() + "@" + b.getGenre() + "#";
 				FileUtils.writeStringToFile(file, toSave, "UTF-8", true);
-			}else if(m.get(s) instanceof Magazine) {
-				Magazine mg = (Magazine)m.get(s);
-				toSave = "&" + mg.getISBNCode() + "|" + mg.getTitle() + "|" + mg.getYear() + "|" + mg.getNumberOfPages() + "|" + mg.getPeriodicity() + "#";
+			}else if(m.get(arr[i]) instanceof Magazine) {
+				Magazine mg = (Magazine)m.get(arr[i]);
+				toSave = "&" + "@" + mg.getISBNCode() + "@" + mg.getTitle() + "@" + mg.getYear() + "@" + mg.getNumberOfPages() + "@" + mg.getPeriodicity() + "#";
 				FileUtils.writeStringToFile(file, toSave, "UTF-8", true);
 			}
 		}
 	}
 	
 	static public void readFromFile() throws IOException {
-		String textFile = FileUtils.readFileToString(file, "UTF-8");
+		String textFile = FileUtils.readFileToString(file, "UTF-8"); 
 		
 		String[] singleObj = textFile.split("#");
 		for(String s : singleObj) {
 			System.out.println(s);
+			
+			if(s.contains("£")) {
+				String[] singleProp = textFile.split("@"); 
+				for(String str : singleProp) {
+					System.out.println(str);
+				}
+			}else if(s.contains("£")){
+				
+			}
+
 		}
 	}
 
