@@ -2,8 +2,10 @@ package CatalogoBiliotecario.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,22 +22,22 @@ public class Prestito {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Utente utente; 
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Libro libroPrestato;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Rivista rivistaPrestata;
 	
-	@Column(nullable = false)
+	
 	private LocalDate dataInizioPrestito;
 	
-	@Column(nullable = false)
+	
 	private LocalDate dataRestituzionePrevista;
 	
-	@Column(nullable = false)
+	
 	private LocalDate dataRestituzioneEffettiva;
 
 	public Prestito() {
@@ -43,22 +45,21 @@ public class Prestito {
 	}
 
 	public Prestito(Utente utente, Libro libroPrestato, LocalDate dataInizioPrestito,
-			LocalDate dataRestituzionePrevista, LocalDate dataRestituzioneEffettiva) {
+			LocalDate dataRestituzioneEffettiva) {
 		super();
 		this.utente = utente;
 		this.libroPrestato = libroPrestato;
 		this.dataInizioPrestito = dataInizioPrestito;
-		this.dataRestituzionePrevista = dataRestituzionePrevista;
+		this.dataRestituzionePrevista = this.dataInizioPrestito.plusDays(30);
 		this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
 	}
 
-	public Prestito( Utente utente, Rivista rivistaPrestata, LocalDate dataInizioPrestito,
-			LocalDate dataRestituzionePrevista, LocalDate dataRestituzioneEffettiva) {
+	public Prestito( Utente utente, Rivista rivistaPrestata, LocalDate dataInizioPrestito, LocalDate dataRestituzioneEffettiva) {
 		super();
 		this.utente = utente;
 		this.rivistaPrestata = rivistaPrestata;
 		this.dataInizioPrestito = dataInizioPrestito;
-		this.dataRestituzionePrevista = dataRestituzionePrevista;
+		this.dataRestituzionePrevista = this.dataInizioPrestito.plusDays(30);
 		this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
 	}
 

@@ -1,5 +1,6 @@
 package CatalogoBibliotecario.controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,9 @@ import javax.persistence.Query;
 import CatalogoBiliotecario.enumerated.Periodicita;
 import CatalogoBiliotecario.model.ArticoloBiblioteca;
 import CatalogoBiliotecario.model.Libro;
+import CatalogoBiliotecario.model.Prestito;
 import CatalogoBiliotecario.model.Rivista;
+import CatalogoBiliotecario.model.Utente;
 
 public class MainProject {
 	
@@ -38,10 +41,22 @@ public class MainProject {
 		r1.setNumeroPagine(49);
 		r1.setPeriodicita(Periodicita.SETTIMANALE);
 		
+		
+		//aggiungiAUtenti(u1);
+		
 		//aggiungiACatalogo(r1); 
 		//rimuoviTramiteISBN("LB0001", "libro");
 		ricercaTramiteISBN("LB0002", "libro");
 		cercaAnno(2019); 
+		
+		cercaAutore("J. R. R. Tolkien");
+		
+		cercaTitolo("o");
+		
+		Utente u1 = new Utente( "Mario","Rossi",LocalDate.of(1993, 5, 6), "TS001");
+		Prestito p1 = new Prestito(u1, l1, LocalDate.of(2023, 5, 17), LocalDate.of(2023, 6, 14));
+		
+		//aggiungiAPrestiti( p1);
 		
 		
 	}
@@ -54,6 +69,32 @@ public class MainProject {
 		try {
 			em.getTransaction().begin();
 			em.persist(l);
+			em.getTransaction().commit();
+		}catch(Exception e) {
+			System.err.println(e.getMessage());
+			em.getTransaction().rollback();
+		}
+		
+	}
+	
+	static void aggiungiAUtenti(Utente u) {
+		
+		try {
+			em.getTransaction().begin();
+			em.persist(u);
+			em.getTransaction().commit();
+		}catch(Exception e) {
+			System.err.println(e.getMessage());
+			em.getTransaction().rollback();
+		}
+		
+	}
+	
+	static void aggiungiAPrestiti(Prestito p) {
+		
+		try {
+			em.getTransaction().begin();
+			em.persist(p);
 			em.getTransaction().commit();
 		}catch(Exception e) {
 			System.err.println(e.getMessage());
@@ -108,12 +149,12 @@ public class MainProject {
 			try {
 				if(tipo.equalsIgnoreCase("libro")) {
 					Query queryLibISBN = em.createNamedQuery("Libro.findISBN");
-					queryLibISBN.setParameter("cod_lib", cod);
+					queryLibISBN.setParameter("cod_lib",cod);
 					Libro l = (Libro) queryLibISBN.getSingleResult();
 					System.out.println(l);
 				}else if(tipo.equalsIgnoreCase("rivista")){
 					Query queryRivISBN = em.createNamedQuery("Rivista.findISBN");
-					queryRivISBN.setParameter("cod_riv", cod);
+					queryRivISBN.setParameter("cod_riv",cod);
 					Rivista r = (Rivista) queryRivISBN.getSingleResult();
 					System.out.println(r);
 				}
@@ -129,26 +170,77 @@ public class MainProject {
 			
 			try {
 					
-					List<ArticoloBiblioteca> l =  new ArrayList();
 					Query queryLibISBN = em.createNamedQuery("Libro.findAnno");
 					queryLibISBN.setParameter("lib_anno",anno);
-					l =  queryLibISBN.getResultList();
+					List<Libro> libri =  queryLibISBN.getResultList();
+					
+					for(Libro libro : libri) {
+						System.out.println(libro);
+					}
 				
 					Query queryRivISBN = em.createNamedQuery("Rivista.findAnno");
 					queryRivISBN.setParameter("riv_anno",anno);
-					l = (List<ArticoloBiblioteca>) queryRivISBN.getSingleResult();
+					List<Rivista> riviste = queryRivISBN.getResultList();
 					
-					for(ArticoloBiblioteca el : l) {
-						System.out.println(el);
+					for(Rivista rivista : riviste) {
+						System.out.println(rivista);
 					}
+				
+					
+					
 			}catch(Exception e) {
 				System.err.println(e.getMessage());
 				}
 			}
 	
 	//- Ricerca per autore
+		
+		static void cercaAutore(String autore) {
+			
+			try {
+				Query queryLibISBN = em.createNamedQuery("Libro.findAutore");
+				queryLibISBN.setParameter("lib_autore", autore);
+				List<Libro> libri =  queryLibISBN.getResultList();
+				
+				for(Libro libro : libri) {
+					System.out.println(libro);
+				}
+			}catch(Exception e) {
+				System.err.println(e.getMessage());
+			}
+			
+		}
 	//- Ricerca per titolo o parte di esso
+		
+		static void cercaTitolo(String titolo) {
+			
+				try {
+					
+					Query queryLibISBN = em.createNamedQuery("Libro.findTitolo");
+					queryLibISBN.setParameter("lib_titolo", "%" +  titolo + "%");
+					List<Libro> libri =  queryLibISBN.getResultList();
+					
+					for(Libro libro : libri) {
+						System.out.println(libro);
+					}
+				
+					Query queryRivISBN = em.createNamedQuery("Rivista.findTitolo");
+					queryRivISBN.setParameter("riv_titolo", "%" +  titolo + "%");
+					List<Rivista> riviste = queryRivISBN.getResultList();
+					
+					for(Rivista rivista : riviste) {
+						System.out.println(rivista);
+					}
+				
+					
+					
+				}catch(Exception e) {
+					System.err.println(e.getMessage());
+				}
+			}
 	//- Ricerca degli elementi attualmente in prestito dato un numero di tessera utente
+		
+		
 	//- Ricerca di tutti i prestiti scaduti e non ancora restituiti
 
 		

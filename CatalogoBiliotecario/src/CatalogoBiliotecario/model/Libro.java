@@ -6,7 +6,9 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQuery(name = "Libro.findISBN", query = "SELECT l FROM Libro l WHERE l.codiceISBN LIKE :cod_lib")
-@NamedQuery(name = "Libro.findAnno", query = "SELECT l FROM Libro l WHERE l.annoPubblicazione LIKE :lib_anno")
+@NamedQuery(name = "Libro.findAnno", query = "SELECT l FROM Libro l WHERE l.annoPubblicazione = :lib_anno")
+@NamedQuery(name = "Libro.findAutore", query = "SELECT l FROM Libro l WHERE l.autore LIKE :lib_autore")
+@NamedQuery(name = "Libro.findTitolo", query = "SELECT l FROM Libro l WHERE l.titolo LIKE :lib_titolo")
 public class Libro extends ArticoloBiblioteca {
 	
 	//I libri hanno inoltre:

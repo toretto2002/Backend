@@ -26,7 +26,7 @@ public class Utente {
 	@Column(nullable = false)
 	private LocalDate dataDiNascita;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String numeroDiTessera;
 
 	public Utente() {

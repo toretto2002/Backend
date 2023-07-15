@@ -8,7 +8,8 @@ import CatalogoBiliotecario.enumerated.Periodicita;
 
 @Entity
 @NamedQuery(name = "Rivista.findISBN", query = "SELECT r FROM Rivista r WHERE r.codiceISBN LIKE :cod_riv")
-@NamedQuery(name = "Rivista.findAnno", query = "SELECT r FROM Rivista r WHERE r.annoPubblicazione LIKE :riv_anno")
+@NamedQuery(name = "Rivista.findAnno", query = "SELECT r FROM Rivista r WHERE r.annoPubblicazione = :riv_anno")
+@NamedQuery(name = "Rivista.findTitolo", query = "SELECT r FROM Rivista r WHERE r.titolo LIKE :riv_titolo")
 public class Rivista extends ArticoloBiblioteca {
 	
 	@Column(nullable = false)
