@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.epicode.classes.Veicolo"/>
-    <fullyQualifiedTypeName name="com.s1g2.es2.MainSim"/>
-    <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="lettore.interfaces.IReproducibleElement"/>
     <fullyQualifiedTypeName name="lettore.interfaces.IBrightness"/>
     <fullyQualifiedTypeName name="lettore.classes.MultimediaElement"/>
@@ -15,8 +10,6 @@
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="ch.qos.logback.classic.Logger"/>
     <fullyQualifiedTypeName name="java.lang.Thread"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.util.stream.Collector"/>
     <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
     <fullyQualifiedTypeName name="Biblio.Enum.Periodicity"/>
@@ -36,7 +29,6 @@
     <fullyQualifiedTypeName name="java.sql.Statement"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.DriverManager"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="java.time.LocalDate"/>
     <fullyQualifiedTypeName name="Enumerated.TipoEvento"/>
     <fullyQualifiedTypeName name="javax.persistence.Id"/>
@@ -54,4 +46,18 @@
     <fullyQualifiedTypeName name="GestioneEventi.EventoDAO"/>
     <fullyQualifiedTypeName name="javax.persistence.Entity"/>
     <fullyQualifiedTypeName name="javax.persistence.Table"/>
+    <fullyQualifiedTypeName name="dipendencyInjection.DrinkConfigurator"/>
+    <fullyQualifiedTypeName name="dipendencyInjection.Drink"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+    <fullyQualifiedTypeName name="dipendencyInjection.PizzaMargherita"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Scope"/>
+    <fullyQualifiedTypeName name="dipendencyInjection.PizzaHawaiana"/>
+    <fullyQualifiedTypeName name="dipendencyInjection.PizzaSalami"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.AnnotationConfigApplicationContext"/>
+    <fullyQualifiedTypeName name="configuration.MenuConfiguration"/>
+    <fullyQualifiedTypeName name="dipendencyInjection.Menu"/>
 </qualifiedTypeNameHistroy>
