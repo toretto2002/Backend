@@ -23,8 +23,6 @@ public class PrenotazioneRunner implements CommandLineRunner  {
 		
 		Utente u1 = ps.creaUtente("tommasino", "Tommaso", "tom.w@example.com");
 		
-		ps.saveUtente(u1);
-		
 		System.out.println(u1);
 		
 	}

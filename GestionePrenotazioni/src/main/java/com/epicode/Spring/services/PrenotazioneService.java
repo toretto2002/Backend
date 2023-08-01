@@ -34,7 +34,5 @@ public class PrenotazioneService {
 		return u;
 	}
 	
-	public void saveUtente(Utente u) {
-		utenteRepo.save(u);
-	}
+
 }
